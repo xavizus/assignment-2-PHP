@@ -1,6 +1,3 @@
-# assignment-2-PHP
-Grupp H inlämingsuppgift
-
 Ni ska skriva en webbapplikation som låter en användare registrera sig och logga in.
 
 - [ ] All funktionalitet ska hanteras i en eller flera klasser.
