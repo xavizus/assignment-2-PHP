@@ -1,7 +1,7 @@
 <?php
 
 class database {
-    private $requiredInfoKeys = array("host", "username","password","database");
+    private $requiredInfoKeys = array("host", "user","password","database");
     private $db;
     private $dsn;
     private $options = 
@@ -11,11 +11,10 @@ class database {
         PDO::ATTR_EMULATE_PREPARES   => false
         ];
         /**
-         * @param $connectionInformation array
+         * @param $connectionInformation object
          * @throw Exception
          * 
          * Expected data:
-         * [
          * "host" => "yourdbhostname", (required)
          * "username" => "yourdbusername", (required)
          * "password" => "yourdbpassword", (requried)
@@ -23,7 +22,7 @@ class database {
          * "port" => yourDBPort (defaults: 3306)
          * "charset" => wantedCharset (defaults: utf8mb4)
          * "options" => array() with PDO options
-         * ]
+         * 
          */
 	function __construct($connectionInformation) {
         try {
@@ -31,7 +30,7 @@ class database {
 
             foreach($this->requiredInfoKeys as $key) {
 
-                if(!array_key_exists($key,$connectionInformation)) 
+                if(!property_exists($connectionInformation,$key)) 
                 {
                    $missingKeys[] = $key;
                 }

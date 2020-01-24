@@ -8,7 +8,7 @@ function autoload($className) {
 spl_autoload_register('autoload');
 $config = new \Settings();
 
-var_dump($config->getDatabaseConfig());
+$test = new \database($config->getDatabaseConfig());
 ?>
 <!DOCTYPE html>
 <html lang="en">
