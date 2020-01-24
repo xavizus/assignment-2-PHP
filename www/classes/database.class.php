@@ -1,7 +1,7 @@
 <?php
 
 class database {
-    private $requiredInfoKeys = array("host", "user","password","database");
+    static private $requiredInfoKeys = array("host", "user","password","database");
     private $db;
     private $dsn;
     private $options = 
@@ -28,7 +28,7 @@ class database {
         try {
             $missingKeys = array();
 
-            foreach($this->requiredInfoKeys as $key) {
+            foreach(SELF::$requiredInfoKeys as $key) {
 
                 if(!property_exists($connectionInformation,$key)) 
                 {
