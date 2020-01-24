@@ -1,13 +1,14 @@
 <?php
 session_start();
-require('config.php');
 
 function autoload($className) {
 	$className = str_replace('\\', '/', $className);
 	require(dirname(__FILE__) . '/classes/'.$className. '.class.php');
 }
+spl_autoload_register('autoload');
+$config = new \Settings();
 
-$newDatabase = new \Database(DATABASEARRAY);
+var_dump($config->getDatabaseConfig());
 ?>
 <!DOCTYPE html>
 <html lang="en">
