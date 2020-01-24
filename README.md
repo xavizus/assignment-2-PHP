@@ -11,3 +11,5 @@ Ni ska skriva en webbapplikation som låter en användare registrera sig och log
 - [ ] Koden ska följa PSR-2.
 - [ ] Koden ska ha enhetstester.
 - [ ] Alla i gruppen ska kunna redovisa varje del av koden.
+
+Philip
