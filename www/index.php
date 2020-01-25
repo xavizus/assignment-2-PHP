@@ -2,8 +2,8 @@
 session_start();
 
 function autoload($className) {
-	$className = str_replace('\\', '/', $className);
-	require(dirname(__FILE__) . '/classes/'.$className. '.class.php');
+    $className = str_replace('\\', '/', $className);
+    require(dirname(__FILE__) . '/classes/'.$className. '.class.php');
 }
 spl_autoload_register('autoload');
 $config = new \Settings();
