@@ -5,7 +5,7 @@
 $toFindIn = php --version
 $matches = $regex.Matches($toFindIn)
 if($matches.Success -eq "True") {
-    php .\tests\phpunit.phar tests
+    php .\tests\phpunit.phar --verbose tests
 }
 else {
     write-host "You need PHP to be installed to run this test!"
