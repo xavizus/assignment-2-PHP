@@ -2,19 +2,18 @@
 
   class Database {
 
-    private $host = 'xav-p-mariadb01.xavizus.com';
-    private $user = 'assignment2-php';
-    private $pass = 'ANm2eAoXoxUAtDeN';
-    private $dbname = 'assignment2-php';
-    private $port = 16200;
+    private $user;
+    private $pass;
 
     private $dbh;
     private $stmt;
     private $error;
 
-    public function __construct(){
+    public function __construct($databaseConfig){
+      $this->user = $databaseConfig->user;
+      $this->pass = $databaseConfig->password;
       // Set DSN
-      $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname .';port='.$this->port;
+      $dsn = 'mysql:host=' . $databaseConfig->host . ';dbname=' . $databaseConfig->database .';port='.$databaseConfig->port;
       $options = array(
         PDO::ATTR_PERSISTENT => true,
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

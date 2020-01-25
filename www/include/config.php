@@ -6,7 +6,7 @@
   define('DB_PORT', 16200);
 
   // URL Root
-define('URLROOT', '/assignment-2-PHP/www');
+define('URLROOT', '');
   // Site Name
 define('SITENAME', 'Grupp_H_PHP');
 

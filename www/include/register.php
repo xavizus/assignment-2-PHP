@@ -1,8 +1,9 @@
 
-<?php include 'header.php'; ?>
-<?php include '../classes/Database.php'; ?>
-
 <?php 
+include 'header.php'; 
+require('../classes/settings.class.php'); 
+include '../classes/Database.php'; 
+
 if(isset($_POST['submit'])){
   // Init data
   $data =[
@@ -20,7 +21,8 @@ if(isset($_POST['submit'])){
 }
 
 function register($data){
-  $db = new Database();
+  $config = new \Settings();
+  $db = new Database($config->getDatabaseConfig());
   $db->query('INSERT INTO users (username, email, password) VALUES(:username, :email, :password)');
   
    // Bind values
@@ -69,7 +71,7 @@ function register($data){
               <input type="submit" name="submit"  value="Register" class="btn btn-success btn-block">
             </div>
             <div class="col">
-              <a href="<?php echo URLROOT; ?>" class="btn btn-light btn-block">Have an account? Login</a>
+              <a href="/" class="btn btn-light btn-block">Have an account? Login</a>
             </div>
           </div>
         </form>
