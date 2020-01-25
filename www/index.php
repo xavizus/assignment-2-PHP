@@ -11,6 +11,7 @@ spl_autoload_register('autoload');
 $config = new \Settings();
 
 $test = new \database($config->getDatabaseConfig());
+
 ?>
   <div class="row pt-4 pb-4">
     <div class="col-md-10 mx-auto">
@@ -18,7 +19,7 @@ $test = new \database($config->getDatabaseConfig());
       
         <h2>Login</h2>
         <p>Please fill in your credentials to log in</p>
-        <form action="<?php echo URLROOT; ?>/users/login.php" method="post">
+        <form action="login.php" method="post">
           <div class="form-group">
             <label for="email">Email: <sup>*</sup></label>
             <input type="email" name="email" class="form-control form-control-lg ">
@@ -34,7 +35,7 @@ $test = new \database($config->getDatabaseConfig());
               <input type="submit" value="Login" class="btn btn-success btn-block">
             </div>
             <div class="col">
-              <a href="<?php echo URLROOT; ?>/register.php" class="btn btn-light btn-block">No account? Register</a>
+              <a href="<?php echo URLROOT; ?>/include/register.php" class="btn btn-light btn-block">No account? Register</a>
             </div>
           </div>
         </form>

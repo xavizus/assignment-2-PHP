@@ -44,5 +44,6 @@ class database {
             throw new Exception("An error occoured when initlizing database. ". $e->getMessage());
         }
     }
+    
 	
 }

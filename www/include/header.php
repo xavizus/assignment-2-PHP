@@ -1,5 +1,5 @@
 <?php 
-  require '../config/config.php';
+  require 'config.php';
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-bzjLLgZOhgXbSvSc5A9LWWo/mSIYf7U7nFbmYIB2Lgmuiw3vKGJuu+abKoaTx4W6" crossorigin="anonymous">
-  <title><?php echo SITENAME; ?></title>
+  <title><?php  ?></title>
 </head>
 <body>
-<?php require 'include/navbar.php'; ?>  
+<?php require 'navbar.php'; ?>  
 <div class="container">
+
