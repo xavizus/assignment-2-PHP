@@ -8,7 +8,9 @@ if(!defined('ROOT_DIR')) {
  */
 
  // Require the file that we want to test.
-require("./www/classes/settings.class.php");
+if(!class_exists('\Settings', false)) {
+    require("./www/classes/settings.class.php");
+}
 
 // Get namespace for TestCase
 use PHPUnit\Framework\TestCase;

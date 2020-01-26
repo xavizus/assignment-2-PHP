@@ -9,7 +9,10 @@ require("./www/classes/Database.php");
 /**
  * To use Database, we need config from Settings.class.php
  */
-require("./www/classes/settings.class.php");
+if(!class_exists('Settings', false)) {
+    require("./www/classes/settings.class.php");
+}
+
 
 
 use PHPUnit\Framework\TestCase;
