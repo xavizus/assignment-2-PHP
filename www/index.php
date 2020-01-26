@@ -1,24 +1,47 @@
 <?php
+require 'include/header.php';
 session_start();
 
-function autoload($className) {
-	$className = str_replace('\\', '/', $className);
-	require(dirname(__FILE__) . '/classes/'.$className. '.class.php');
+function autoload($className)
+{
+    $className = str_replace('\\', '/', $className);
+    require dirname(__FILE__) . '/classes/' . $className . '.class.php';
 }
 spl_autoload_register('autoload');
 $config = new \Settings();
 
 $test = new \database($config->getDatabaseConfig());
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+  <div class="row pt-4 pb-4">
+    <div class="col-md-10 mx-auto">
+      <div class="card card-body bg-light mt-5">
+
+        <h2>Login</h2>
+        <p>Please fill in your credentials to log in</p>
+        <form action="login.php" method="post">
+          <div class="form-group">
+            <label for="email">Email: <sup>*</sup></label>
+            <input type="email" name="email" class="form-control form-control-lg ">
+
+          </div>
+          <div class="form-group">
+            <label for="password">Password: <sup>*</sup></label>
+            <input type="password" name="password" class="form-control form-control-lg" >
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="submit" value="Login" class="btn btn-success btn-block">
+            </div>
+            <div class="col">
+              <a href="<?php echo URLROOT; ?>/include/register.php" class="btn btn-light btn-block">No account? Register</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<?php require 'include/footer.php';?>
