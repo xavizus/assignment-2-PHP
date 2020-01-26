@@ -26,7 +26,7 @@ class Database
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
-            echo $this->error;
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -53,8 +53,9 @@ class Database
                     $type = PDO::PARAM_STR;
             }
         }
-
         $this->stmt->bindValue($param, $value, $type);
+
+        return $type;
     }
 
     // Execute the prepared statement
