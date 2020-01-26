@@ -12,15 +12,15 @@ class Database
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
-    private $charset = "utf8mb4";
+  //  private $charset = "utf8mb4";
 
     public function __construct($databaseInfo)
     {
         $this->dsn =
         "mysql:host=".$databaseInfo->host .
-        "port=".$databaseInfo->port .
-        "dbname=".$databaseInfo->database .
-        "charset=$charset";
+        ";port=".$databaseInfo->port .
+        ";dbname=".$databaseInfo->database .
+        ";charset=".$databaseInfo->charset;
         $this->user = $databaseInfo->user;
         $this->password = $databaseInfo->password;
     }
@@ -70,4 +70,4 @@ class Database
     
 
 echo ("hello world");
-echo (connect());
+//echo (connect());
