@@ -2,7 +2,7 @@
 <?php
 include 'header.php';
 require '../classes/settings.class.php';
-include '../classes/Database.php';
+include '../classes/Database.class.php';
 
 $data = [
     'name' => '',

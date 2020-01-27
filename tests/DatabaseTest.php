@@ -4,7 +4,7 @@ if(!defined('ROOT_DIR')) {
     define("ROOT_DIR", __DIR__ . "/../");
 }
 
-require("./www/classes/Database.php");
+require("./www/classes/Database.class.php");
 
 /**
  * To use Database, we need config from Settings.class.php
@@ -74,7 +74,7 @@ class databaseTest extends TestCase {
             PDO::PARAM_STR => $randomString
         );
 
-        $this->database->query("SELECT * FROM users WHERE ueser = (:user)");
+        $this->database->query("SELECT * FROM users WHERE username = (:user)");
 
         foreach($typesToTest as $keyType => $type) {
             $typeToAssert = $this->database->bind(':user', $type);

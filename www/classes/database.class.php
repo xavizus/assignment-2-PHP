@@ -3,7 +3,7 @@
 class Database
 {
     
-    private $dsn;
+    private $dbh;
     private $user;
     private $password;
     private $options =
@@ -12,49 +12,22 @@ class Database
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
-  //  private $charset = "utf8mb4";
 
-    public function __construct($databaseInfo)
+    public function __construct($databaseConfig)
     {
-        $this->dsn =
-        "mysql:host=".$databaseInfo->host .
-        ";port=".$databaseInfo->port .
-        ";dbname=".$databaseInfo->database .
-        ";charset=".$databaseInfo->charset;
-        $this->user = $databaseInfo->user;
-        $this->password = $databaseInfo->password;
-    }
+        $this->user = $databaseConfig->user;
+        $this->pass = $databaseConfig->password;
+        // Set DSN
+        $dsn = 'mysql:host=' . $databaseConfig->host . ';dbname=' . $databaseConfig->database . ';port=' . $databaseConfig->port;
 
-    public function connect()
-    {
+        // Create PDO instance
         try {
-            $this->pdo = new PDO($this->dsn, $this->user, $this->pass, $this->options);
-        }
-        catch (Exception $e) {
-            error_log("Something went wrong: ". $e->getMessage());
+            $this->dbh = new PDO($dsn, $this->user, $this->pass, $this->options);
+        } catch (PDOException $e) {
+            $this->error = $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
-
-    // public function something($connectionInformation)
-    // {
-    //     try {
-    //         $missingKeys = array();
-
-    //         foreach ($this->requiredInfoKeys as $key)
-    //         {
-    //             if (!array_key_exists($key, $connectionInformation))
-    //             {
-    //                 $missingKeys[] = $key;
-    //             }
-    //         }
-    //         if (!empty($missingKeys)) {
-    //             throw new Exception("Follwing keys are missing: ". implode(', '.$missingKeys));
-    //         }
-    //     }
-    //     catch (Exception $e) {
-    //         throw new Exception("An error occoured when initlizing database. ". $e->getMessage());
-    //     }
-    // }
    
     public function checkCredentials($username, $password)
     {
@@ -66,8 +39,53 @@ class Database
         $statment = $statment->execute(array($username, $password));
         echo ($sql);
     }
-}
-    
 
-echo ("hello world");
-//echo (connect());
+    // Prepare statement with query
+    public function query($sql)
+    {
+        $this->stmt = $this->dbh->prepare($sql);
+    }
+    // Bind values
+    public function bind($param, $value, $type = null)
+    {
+        if (is_null($type)) {
+            switch (true) {
+                case is_int($value):
+                    $type = PDO::PARAM_INT;
+                    break;
+                case is_bool($value):
+                    $type = PDO::PARAM_BOOL;
+                    break;
+                case is_null($value):
+                    $type = PDO::PARAM_NULL;
+                    break;
+                default:
+                    $type = PDO::PARAM_STR;
+            }
+        }
+        $this->stmt->bindValue($param, $value, $type);
+
+        return $type;
+    }
+
+    // Execute the prepared statement
+    public function execute()
+    {
+        return $this->stmt->execute();
+    }
+
+    // Get result set as array of objects
+    public function resultSet()
+    {
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Get single record as object
+    public function single()
+    {
+        $this->execute();
+        return $this->stmt->fetch(PDO::FETCH_OBJ);
+    }
+}
+
