@@ -26,4 +26,18 @@ class User
             return false;
         }
     }
+    public function validate($rows)
+    {
+        $this->db->query('SELECT * FROM users WHERE (email, password) VALUES(:email, :password)');
+
+        // Bind values
+        $this->db->bind(':email', $rows['email']);
+        $this->db->bind(':password', $rows['password']);
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
