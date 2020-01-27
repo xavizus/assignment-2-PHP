@@ -1,1 +1,1 @@
-php -S localhost:1337
+php -S localhost:1337 -t './www'
