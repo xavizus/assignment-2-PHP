@@ -26,7 +26,7 @@ class User
     }
     public function validate($rows)
     {
-        $this->db->query('SELECT * FROM users WHERE (email, password) VALUES(:email, :password)');
+        $this->db->query('SELECT * FROM users WHERE email = :email AND password = :password');
 
         // Bind values
         $this->db->bind(':email', $rows['email']);
