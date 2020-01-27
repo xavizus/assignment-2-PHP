@@ -1,4 +1,5 @@
 <?php
+namespace classes;
 
 class User
 {
@@ -8,7 +9,6 @@ class User
     {
         $config = new \Settings();
         $this->db = new Database($config->getDatabaseConfig());
-
     }
     public function register($data)
     {
