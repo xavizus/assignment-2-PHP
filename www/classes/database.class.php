@@ -87,4 +87,16 @@ class Database
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    public function deleteUserById($idToDelete)
+    {
+        $this->query("DELETE FROM users where idusers = :idusers");
+        $this->bind(":idusers", $idToDelete);
+        $this->execute();
+    }
+
+    public function getLastInsertedId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }

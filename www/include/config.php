@@ -3,6 +3,6 @@ if (!defined('ROOT_DIR')) {
     define("ROOT_DIR", __DIR__ . "/../../");
 }
 // URL Root
-define('URLROOT', '/assignment-2-PHP/www');
+define('URLROOT', (!empty($_SERVER['HTTPS']) ? 'https' : 'http') ."://". $_SERVER['HTTP_HOST'].'/www');
 // Site Name
 define('SITENAME', 'Grupp_H_PHP');
