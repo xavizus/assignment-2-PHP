@@ -25,7 +25,7 @@ class Test extends TestCase {
 	}
 	
 	// All test functions need to strat with test- and anything after.
-	// All assertsions can be found @ https://phpunit.de/manual/6.5/en/appendixes.assertions.html
+	// All assertsions can be found @ https://phpunit.readthedocs.io/en/8.5/
 
 	// In this case, we are testing if we get an instance of stdClass.
 	public function testGetDatabaseConfig() {

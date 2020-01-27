@@ -13,8 +13,9 @@ class Database
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
 
-    public function __construct($databaseConfig)
-    {
+    public function __construct($config)
+    {   
+        $databaseConfig = $config->getDatabaseConfig();
         $this->user = $databaseConfig->user;
         $this->pass = $databaseConfig->password;
         // Set DSN

@@ -22,8 +22,6 @@ class SettingsTest extends TestCase {
 
 	// This is just a holder for the class we will test against.
     protected $settings;
-    
-    private $testFailed = false;
 	
 	// This function sets up your default settings before running the tests.
 	public function setUp() :void {
@@ -40,7 +38,7 @@ class SettingsTest extends TestCase {
 	}
 	
 	// All test functions need to strat with test- and anything after.
-	// All assertsions can be found @ https://phpunit.de/manual/6.5/en/appendixes.assertions.html
+	// All assertsions can be found @ https://phpunit.readthedocs.io/en/8.5/
 
     /**
      * Check if an exception really throws when wrong path is given.

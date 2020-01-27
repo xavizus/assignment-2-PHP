@@ -56,7 +56,12 @@ if (isset($_POST['submit'])) {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
         echo var_dump($data);
-        $user = new User();
+        /**
+         * Dependency Injection
+         */
+        $config = new \Settings();
+        $database = new Database($config);
+        $user = new User($database);
         $user->register($data);
     }
 }
