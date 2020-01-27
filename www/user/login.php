@@ -25,14 +25,17 @@ if (isset($_POST['submit'])) {
     // Validate Email
     if (empty($data['email'])) {
         $data['email_err'] = 'Please enter email';
+    } elseif ($data['email'] !== $data['email']) {
         //email not found
+        $data['email_err'] = 'Email not found';
     }
+        
     // Validate Password
     if (empty($data['password'])) {
         $data['password_err'] = 'Please enter password';
-    } elseif (strlen($data['password']) < 6) {
+    } elseif ($data['password'] !== $data['password']) {
         //password not found
-        $data['password_err'] = 'Password must be at least 6 characters';
+        $data['password_err'] = 'Password not found';
     }
 
     if (empty($data['email_err']) && empty($data['password_err'])) {
@@ -40,7 +43,6 @@ if (isset($_POST['submit'])) {
 
         echo var_dump($data);
         $user = new User();
-        $user->register($data);
-        //$user->validate($data);
+        $user->validate($rows);
     }
 }
