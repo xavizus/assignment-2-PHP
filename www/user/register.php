@@ -59,9 +59,8 @@ if (isset($_POST['submit'])) {
         /**
          * Dependency Injection
          */
-        $config = new \Settings();
-        $database = new Database($config);
-        $user = new User($database);
+        $database = new Database(new \Settings());
+        $user = new classes\User($database);
         $user->register($data);
     }
 }
