@@ -1,5 +1,5 @@
 <?php
-if(!defined('ROOT_DIR')) {
+if (!defined('ROOT_DIR')) {
     define("ROOT_DIR", __DIR__ . "/../../");
 }
 // URL Root

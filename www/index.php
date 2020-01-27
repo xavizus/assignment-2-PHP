@@ -8,9 +8,6 @@ function autoload($className)
     require dirname(__FILE__) . '/classes/' . $className . '.class.php';
 }
 spl_autoload_register('autoload');
-$config = new \Settings();
-
-$test = new \database($config->getDatabaseConfig());
 
 ?>
   <div class="row pt-4 pb-4">

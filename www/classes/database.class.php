@@ -2,7 +2,6 @@
 
 class Database
 {
-    
     private $dbh;
     private $user;
     private $password;
@@ -13,8 +12,9 @@ class Database
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
 
-    public function __construct($databaseConfig)
+    public function __construct($config)
     {
+        $databaseConfig = $config->getDatabaseConfig();
         $this->user = $databaseConfig->user;
         $this->pass = $databaseConfig->password;
         // Set DSN
@@ -37,7 +37,7 @@ class Database
         ";
         $statment = $dsn->prepare($sql);
         $statment = $statment->execute(array($username, $password));
-        echo ($sql);
+        echo($sql);
     }
 
     // Prepare statement with query
@@ -88,4 +88,3 @@ class Database
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 }
-

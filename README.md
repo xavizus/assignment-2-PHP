@@ -8,7 +8,7 @@ Ni ska skriva en webbapplikation som låter en användare registrera sig och log
 - [x] Lösenord får inte sparas i klartext.
 - [ ] När användaren har loggats in ska ni sätta en sessionsvariabel som håller reda på att användaren är inloggad, dess användarnamn och mailadress.
 - [x] Alla frågor mot databasen ska använda PDO och prepared statements.
-- [ ] Koden ska följa PSR-2.
+- [x] Koden ska följa PSR-2.
 - [x] Koden ska ha enhetstester.
 - [ ] Alla i gruppen ska kunna redovisa varje del av koden.
 

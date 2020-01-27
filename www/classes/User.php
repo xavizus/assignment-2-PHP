@@ -5,14 +5,12 @@ class User
 {
     private $db;
 
-    public function __construct()
+    public function __construct($database)
     {
-        $config = new \Settings();
-        $this->db = new Database($config->getDatabaseConfig());
+        $this->db = $database;
     }
     public function register($data)
     {
-
         $this->db->query('INSERT INTO users (username, email, password) VALUES(:username, :email, :password)');
 
         // Bind values
