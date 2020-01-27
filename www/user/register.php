@@ -1,8 +1,9 @@
 
 <?php
-include 'header.php';
+include '../include/header.php';
 require '../classes/settings.class.php';
 include '../classes/Database.class.php';
+include '../classes/User.php';
 
 $data = [
     'name' => '',
@@ -55,27 +56,11 @@ if (isset($_POST['submit'])) {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
         echo var_dump($data);
-        register($data);
+        $user = new User();
+        $user->register($data);
     }
 }
 
-function register($data)
-{
-    $config = new \Settings();
-    $db = new Database($config->getDatabaseConfig());
-    $db->query('INSERT INTO users (username, email, password) VALUES(:username, :email, :password)');
-
-    // Bind values
-    $db->bind(':username', $data['username']);
-    $db->bind(':email', $data['email']);
-    $db->bind(':password', $data['password']);
-    // Execute
-    if ($db->execute()) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 ?>
 
@@ -119,4 +104,4 @@ function register($data)
       </div>
     </div>
   </div>
-<?php include 'footer.php';?>
+<?php include '../include/footer.php';?>
