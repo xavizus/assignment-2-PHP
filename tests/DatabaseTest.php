@@ -69,10 +69,12 @@ class databaseTest extends TestCase
          */
         $settings = new class($randomData) {
             private $data;
-            public function __construct($data) {
+            public function __construct($data)
+            {
                 $this->data = $data;
             }
-            public function getDatabaseConfig() {
+            public function getDatabaseConfig()
+            {
                 return  $this->data;
             }
         };

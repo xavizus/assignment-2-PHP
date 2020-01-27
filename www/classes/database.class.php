@@ -2,7 +2,6 @@
 
 class Database
 {
-    
     private $dbh;
     private $user;
     private $password;
@@ -14,7 +13,7 @@ class Database
     ];
 
     public function __construct($config)
-    {   
+    {
         $databaseConfig = $config->getDatabaseConfig();
         $this->user = $databaseConfig->user;
         $this->pass = $databaseConfig->password;
@@ -38,7 +37,7 @@ class Database
         ";
         $statment = $dsn->prepare($sql);
         $statment = $statment->execute(array($username, $password));
-        echo ($sql);
+        echo($sql);
     }
 
     // Prepare statement with query
@@ -89,4 +88,3 @@ class Database
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 }
-
