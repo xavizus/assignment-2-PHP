@@ -24,15 +24,17 @@ class User
             return false;
         }
     }
-    public function validate($rows)
-    {
-        $this->db->query('SELECT * FROM users WHERE email = :email AND password = :password');
 
+    public function validate($data)
+    {
+        $this->db->query('SELECT password FROM users WHERE email = :email');
         // Bind values
-        $this->db->bind(':email', $rows['email']);
-        $this->db->bind(':password', $rows['password']);
+        $this->db->bind(':email', $data['email']);
         // Execute
-        if ($this->db->execute()) {
+        $result = $this->db->single();
+        // error_log(json_encode($result));
+        if (password_verify($data['password'], $result->password))
+        {
             return true;
         } else {
             return false;
