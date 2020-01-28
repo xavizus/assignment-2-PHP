@@ -26,8 +26,7 @@ class User
     }
     public function validate($data)
     {
-        error_log(\implode(', ', $data));
-        $this->db->query('SELECT * FROM users WHERE email == :email AND `password` == :password');
+        $this->db->query('SELECT * FROM users WHERE email = :email AND `password` = :password');
 
         // Bind values
         $this->db->bind(':email', $data['email']);
