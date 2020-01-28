@@ -1,4 +1,4 @@
-<h1>Login</h1>
+
 
 <?php
 
@@ -25,10 +25,11 @@ if (isset($_POST['submit'])) {
     // Validate Email
     if (empty($data['email'])) {
         $data['email_err'] = 'Please enter email';
-    } elseif ($data['email'] !== $data['email']) {
-        //email not found
-        $data['email_err'] = 'Email not found';
-    }
+    } 
+    // elseif ($data['email'] !== $data['email']) {
+    //     //email not found
+    //     $data['email_err'] = 'Email not found';
+    // }
         
     // Validate Password
     if (empty($data['password'])) {
@@ -40,15 +41,23 @@ if (isset($_POST['submit'])) {
     // }
 
     if (empty($data['email_err']) && empty($data['password_err'])) {
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-        echo "Welcome $data[email]";
-        echo "Welcome $data[password]";
+        // $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
         $database = new Database(new \Settings());
         $user = new classes\User($database);
-        $user->validate($data);
-        var_dump($user->validate($data));
+        $isValidated =  $user->validate($data);
+        if ($isValidated)
+        {
+            header('Location: /');
+        }
+        if ($data['email'] !== $data['email' ]);
+        {
+            $data['email_err'] = 'Email not found';
+        }
+        if ($data['password'] !== $data['password' ]);
+        {
+            $data['password_err'] = 'Password not found';
+        }
     }
 }
 ?>
