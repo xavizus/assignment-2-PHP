@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
         $isValidated =  $user->validate($data);
         if ($isValidated)
         {
-            header('Location: /');
+            header('Location: /success.php');
         }
         if ($data['email'] !== $data['email' ]);
         {
