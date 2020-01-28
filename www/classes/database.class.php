@@ -2,7 +2,7 @@
 
 class Database
 {
-    private $dbh;
+    private $dbh; //vad är detta? ska det inte va host?
     private $user;
     private $password;
     private $options =
@@ -29,21 +29,22 @@ class Database
         }
     }
    
-    public function checkCredentials($username, $password)
-    {
-        $sql = "Select `user`
-        FROM users
-        WHERE user = ? AND pass = ?
-        ";
-        $statment = $dsn->prepare($sql);
-        $statment = $statment->execute(array($username, $password));
-        echo($sql);
-    }
+    // public function checkCredentials($username, $password)
+    // {
+    //     $sql = "Select `user`
+    //     FROM users
+    //     WHERE username = ? AND password = ?
+    //     ";
+    //     $statment = $dsn->prepare($sql);
+    //     $statment = $statment->execute(array($username, $password));
+    //     echo($sql);
+    // }
 
     // Prepare statement with query
     public function query($sql)
     {
         $this->stmt = $this->dbh->prepare($sql);
+        //funkar tydligen inte
     }
     // Bind values
     public function bind($param, $value, $type = null)
