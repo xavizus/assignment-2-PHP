@@ -8,15 +8,12 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-
             <li class="navbar-item">
                 <a class="nav-link" href="<?php echo URLROOT; ?>/user/register.php">Register</a>
             </li>
             <li class="navbar-item">
                 <a class="nav-link" href="<?php echo URLROOT; ?>">Login</a>
             </li>
-
         </ul>
-
     </div>
 </nav>

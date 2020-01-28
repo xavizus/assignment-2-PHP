@@ -54,8 +54,6 @@ if (isset($_POST['submit'])) {
 
     if (empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-        echo var_dump($data);
         /**
          * Dependency Injection
          */
@@ -64,7 +62,6 @@ if (isset($_POST['submit'])) {
         $user->register($data);
     }
 }
-
 
 ?>
 
@@ -101,7 +98,7 @@ if (isset($_POST['submit'])) {
               <input type="submit" name="submit"  value="Register" class="btn btn-success btn-block">
             </div>
             <div class="col">
-              <a href="<?php echo URLROOT; ?>/user/login.php" class="btn btn-light btn-block">Have an account? Login</a>
+              <a href="<?php echo URLROOT; ?>" class="btn btn-light btn-block">Have an account? Login</a>
             </div>
           </div>
         </form>
