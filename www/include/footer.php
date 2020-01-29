@@ -1,5 +1,5 @@
 </div>
-<footer class="footer bg-primary text-center ">
+<footer class="footer bg-primary text-center fixed-bottom">
     <div class="container">
         <span class="text-white">© 2020 Copyright</span>
     </div>

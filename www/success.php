@@ -10,7 +10,7 @@ echo "<h1>" . 'Your email is ' . $_SESSION['email'] . "</h1>";
 
 
 
-<!-- require 'include/header.php';
+<!--require 'include/header.php';
 session_start();
 $user_check = '';
 if (isset($_SESSION['login_user'])) {
@@ -23,8 +23,6 @@ if (isset($_SESSION['login_user'])) {
         <h1>Welcome <?php echo $user_check; ?></h1>
       </div>
     </div>
-</div>
+</div> -->
 
-<?php require 'include/footer.php';?> -->
-
-
+<?php require 'include/footer.php';?> 
