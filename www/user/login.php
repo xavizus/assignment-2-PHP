@@ -1,9 +1,11 @@
 <?php
 
-include '../include/header.php';
+include '../include/config.php';
 require '../classes/settings.class.php';
 include '../classes/Database.class.php';
 include '../classes/User.php';
+
+session_start();
 
     // Init data
     $data = [
@@ -30,6 +32,8 @@ include '../classes/User.php';
         $isValidated =  $user->validate($data);
         if ($isValidated)
         {
+            $_SESSION['username'] = $isValidated->username;
+            $_SESSION['email'] = $data['email'];
             header('Location: /success.php');
         }
         else {

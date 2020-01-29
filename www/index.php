@@ -1,7 +1,5 @@
-<h1>ff</h1>
 <?php
 require 'include/header.php';
-session_start();
 
 function autoload($className)
 {

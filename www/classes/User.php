@@ -27,7 +27,7 @@ class User
 
     public function validate($data)
     {
-        $this->db->query('SELECT password FROM users WHERE email = :email');
+        $this->db->query('SELECT password, username FROM users WHERE email = :email');
         // Bind values
         $this->db->bind(':email', $data['email']);
         // Execute
@@ -35,7 +35,7 @@ class User
         // error_log(json_encode($result));
         if (password_verify($data['password'], $result->password))
         {
-            return true;
+            return $result;
         } else {
             return false;
         }
