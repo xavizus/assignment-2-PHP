@@ -1,7 +1,5 @@
 <?php
 
-namespace \database;
-
 class Database
 {
     private $dbh;
