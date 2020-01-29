@@ -1,5 +1,6 @@
 <?php
 namespace classes;
+session_start();
 
 class User
 {
@@ -42,5 +43,13 @@ class User
         } else {
             return false;
         }
+    }
+
+     public function logout()
+    {
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        session_destroy();
+        header('Location: /');
     }
 }

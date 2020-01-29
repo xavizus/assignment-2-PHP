@@ -5,7 +5,7 @@ require '../classes/settings.class.php';
 include '../classes/Database.class.php';
 include '../classes/User.php';
 
-session_start();
+//session_start();
 
     // Init data
     $data = [
