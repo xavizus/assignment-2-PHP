@@ -61,6 +61,7 @@ if (isset($_POST['submit'])) {
         $database = new Database(new \Settings());
         $user = new classes\User($database);
         $user->register($data);
+        header('Location: /');
     }
 }
 
