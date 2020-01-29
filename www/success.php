@@ -1,14 +1,14 @@
 <?php
+require 'include/logout-header.php';
 session_start();
-
-echo 'Welcome ' . $_SESSION['username'];
+echo "<br>" . "<br>" . "<br>";
+echo "<h1>" . 'Welcome ' . $_SESSION['username'] . "</h1>";
 echo "<br>";
-echo 'Your email is ' . $_SESSION['email'];
-
+echo "<h1>" . 'Your email is ' . $_SESSION['email'] . "</h1>";
 
 ?>
 
-<h1> Success</h1>
+
 
 <!-- require 'include/header.php';
 session_start();
@@ -26,4 +26,5 @@ if (isset($_SESSION['login_user'])) {
 </div>
 
 <?php require 'include/footer.php';?> -->
+
 

@@ -32,6 +32,7 @@ session_start();
         if ($isValidated) {
             $_SESSION['username'] = $isValidated->username;
             $_SESSION['email'] = $data['email'];
+            // echo "<h1>".$_SESSION['username']."</h1>";
             header('Location: /success.php');
         } else {
             header('Location: /index.php?msg_err=Det gick inte att logga in');

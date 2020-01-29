@@ -15,6 +15,6 @@ require 'config.php';
   <title><?php ?></title>
 </head>
 <body>
-<?php require 'navbar.php';?>
+<?php require 'logout-nav.php';?>
 <div class="container">
 
