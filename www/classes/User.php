@@ -1,5 +1,6 @@
 <?php
 namespace classes;
+
 session_start();
 
 class User
@@ -34,7 +35,7 @@ class User
         // Execute
 
         $result = $this->db->single();
-        if(empty($result)) {
+        if (empty($result)) {
             return false;
         }
         // error_log(json_encode($result));
@@ -45,7 +46,7 @@ class User
         }
     }
 
-     public function logout()
+    public function logout()
     {
         unset($_SESSION['username']);
         unset($_SESSION['email']);
