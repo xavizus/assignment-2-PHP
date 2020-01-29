@@ -1,5 +1,6 @@
 <?php
 
+
 include '../include/config.php';
 require '../classes/settings.class.php';
 include '../classes/Database.class.php';
@@ -25,7 +26,7 @@ include '../classes/User.php';
     }
 
     if (empty($data['email_err']) && empty($data['password_err'])) {
-        $database = new Database(new \Settings());
+        $database = new classes\Database(new classes\Settings());
         $user = new classes\User($database);
         $isValidated =  $user->validate($data);
 

@@ -6,7 +6,7 @@ include '../classes/Database.class.php';
 include '../classes/User.php';
 
 
-$database = new Database(new \Settings());
+$database = new classes\Database(new classes\Settings());
 $user = new classes\User($database);
 
 $user->logout();

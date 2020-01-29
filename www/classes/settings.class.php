@@ -1,5 +1,7 @@
 <?php
 
+namespace classes;
+
 class Settings
 {
     private $databaseConfigs = null;
