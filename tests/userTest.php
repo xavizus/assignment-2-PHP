@@ -1,26 +1,10 @@
 <?php
 
-if (!defined('ROOT_DIR')) {
-    define("ROOT_DIR", __DIR__ . "/../");
-}
-
- // Require
-if (!class_exists('\Settings', false)) {
-    require("./www/classes/settings.class.php");
-}
- // Require
- if (!class_exists('\Database', false)) {
-     require("./www/classes/database.class.php");
- }
-
- // Require
- if (!class_exists('classes\User', false)) {
-     require("./www/classes/User.php");
- }
+namespace Test;
 
 use PHPUnit\Framework\TestCase;
 
-class userTest extends TestCase
+class UserTest extends TestCase
 {
     protected $database;
 
@@ -29,13 +13,30 @@ class userTest extends TestCase
     private $testIDs = array();
     
     // This function sets up your default settings before running the tests.
-    public function setUp() :void
+    public function setUp(): void
     {
+        if (!defined('ROOT_DIR')) {
+            define("ROOT_DIR", __DIR__ . "/../");
+        }
+        
+         // Require
+        if (!class_exists('\Settings', false)) {
+            require("./www/classes/settings.class.php");
+        }
+         // Require
+        if (!class_exists('\Database', false)) {
+            require("./www/classes/database.class.php");
+        }
+        
+         // Require
+        if (!class_exists('classes\User', false)) {
+            require("./www/classes/User.php");
+        }
         try {
             $this->database = new Database(new \Settings());
             $this->user = new classes\User($this->database);
         } catch (Exception $error) {
-            $this->markTestSkipped("Something went when loading Database or User class: ".
+            $this->markTestSkipped("Something went when loading Database or User class: " .
             $error->getMessage());
         }
     }
@@ -47,7 +48,7 @@ class userTest extends TestCase
     {
         $mockUpData = array(
             "username" => $this->generateRandomString(20),
-            "email" => $this->generateRandomString(5) ."@".$this->generateRandomString(5),
+            "email" => $this->generateRandomString(5) . "@" . $this->generateRandomString(5),
             "plainPassword" => $this->generateRandomString(15)
         );
         $mockUpData["password"] = password_hash($mockUpData['plainPassword'], PASSWORD_DEFAULT);
@@ -66,7 +67,7 @@ class userTest extends TestCase
         $mockUpData['password'] = $mockUpData['plainPassword'];
         $shouldContainData = $this->user->validate($mockUpData);
         $accountVerified = false;
-        if(!empty($shouldContainData)){
+        if (!empty($shouldContainData)) {
             $accountVerified = true;
         }
 
@@ -90,7 +91,7 @@ class userTest extends TestCase
         $string = "";
 
         for ($index = 0; $index < $length; $index++) {
-            $randomCharacter = rand(0, strlen($characters)-1);
+            $randomCharacter = rand(0, strlen($characters) - 1);
             $string .= $characters[$randomCharacter];
         }
 

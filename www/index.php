@@ -1,12 +1,11 @@
 <?php
+
 require 'include/header.php';
 
-function autoload($className)
-{
-    $className = str_replace('\\', '/', $className);
-    require dirname(__FILE__) . '/classes/' . $className . '.class.php';
-}
-spl_autoload_register('autoload');
+$data = array(
+  "msg" => $_GET['msg_err'] ?? null,
+  "is-invalid" => (!empty($_GET['msg_err'])) ? 'is-invalid' : ''
+)
 
 ?>
   <div class="row pt-4 pb-4">
@@ -19,15 +18,15 @@ spl_autoload_register('autoload');
           <div class="form-group">
             <label for="email">Email: <sup>*</sup></label>
             <input type="email" name="email" class="form-control form-control-lg
-             <?php echo (!empty($_GET['msg_err'])) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $_GET['msg_err']; ?></span>
+             <?php echo $data['is-invalid'] ?>">
+            <span class="invalid-feedback"><?php echo $data['msg']; ?></span>
 
           </div>
           <div class="form-group">
             <label for="password">Password: <sup>*</sup></label>
             <input type="password" name="password" class="form-control form-control-lg
-             <?php echo (!empty($_GET['msg_err'])) ? 'is-invalid' : ''; ?>" >
-            <span class="invalid-feedback"><?php echo $_GET['msg_err']; ?></span>
+            <?php echo $data['is-invalid'] ?>">
+            <span class="invalid-feedback"><?php echo $data['msg']; ?></span>
 
           </div>
           <div class="row">

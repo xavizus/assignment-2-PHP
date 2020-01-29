@@ -1,3 +1,5 @@
 {
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "phpcs.enable": true,
+    "phpcs.standard": "PSR2"
 }

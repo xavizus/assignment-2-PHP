@@ -4,7 +4,7 @@
 [regex]$regex = 'PHP ([0-9]{1,}\.)+[0-9]{1,}'
 $toFindIn = php --version
 $matches = $regex.Matches($toFindIn)
-if($matches.Success -eq "True") {
+if ($matches.Success -eq "True") {
     php .\tests\phpunit.phar --verbose tests
 }
 else {

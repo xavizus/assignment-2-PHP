@@ -6,10 +6,10 @@ Ni ska skriva en webbapplikation som låter en användare registrera sig och log
 - [x] Ni ska säkra upp och modularisera era klasser med hjälp av synlighet (private, protected, public) och getters / setters.
 - [x] Användarna ska lagras i en MySQL-databas.
 - [x] Lösenord får inte sparas i klartext.
-- [ ] När användaren har loggats in ska ni sätta en sessionsvariabel som håller reda på att användaren är inloggad, dess användarnamn och mailadress.
+- [x] När användaren har loggats in ska ni sätta en sessionsvariabel som håller reda på att användaren är inloggad, dess användarnamn och mailadress.
 - [x] Alla frågor mot databasen ska använda PDO och prepared statements.
 - [x] Koden ska följa PSR-2.
 - [x] Koden ska ha enhetstester.
-- [ ] Alla i gruppen ska kunna redovisa varje del av koden.
+- [x] Alla i gruppen ska kunna redovisa varje del av koden.
 
 Philip

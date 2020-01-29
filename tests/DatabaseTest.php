@@ -1,8 +1,6 @@
 <?php
 
-if (!defined('ROOT_DIR')) {
-    define("ROOT_DIR", __DIR__ . "/../");
-}
+ namespace Test;
 
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +8,7 @@ use PHPUnit\Framework\TestCase;
  * This class tests database class functionality
  */
 
-class databaseTest extends TestCase
+class DatabaseTest extends TestCase
 {
     protected $databse;
     protected $settings;
@@ -19,8 +17,12 @@ class databaseTest extends TestCase
      * To run this test, we require two classes,
      * settings and database
      */
-    public function setUp() :void
+    public function setUp(): void
     {
+        if (!defined('ROOT_DIR')) {
+            define("ROOT_DIR", __DIR__ . "/../");
+        }
+        
         if (!class_exists('Database', false)) {
             require("./www/classes/database.class.php");
         }
@@ -31,11 +33,8 @@ class databaseTest extends TestCase
         
         try {
             $this->database = new \Database($this->settings);
-        }
-
-        // skipp remaining tests if loading database fails.
-        catch (Exception $error) {
-            $this->markTestSkipped("Something went when loading Database class: ".
+        } catch (Exception $error) {
+            $this->markTestSkipped("Something went when loading Database class: " .
             $error->getMessage());
         }
     }
@@ -67,7 +66,7 @@ class databaseTest extends TestCase
          * Creating annomous class,
          * I think I found a caseuse for interfaces now.
          */
-        $settings = new class($randomData) {
+        $settings = new class ($randomData) {
             private $data;
             public function __construct($data)
             {
@@ -130,7 +129,7 @@ class databaseTest extends TestCase
         $string = "";
 
         for ($index = 0; $index < $length; $index++) {
-            $randomCharacter = rand(0, strlen($characters)-1);
+            $randomCharacter = rand(0, strlen($characters) - 1);
             $string .= $characters[$randomCharacter];
         }
 

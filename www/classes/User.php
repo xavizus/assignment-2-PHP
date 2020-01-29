@@ -1,7 +1,6 @@
 <?php
-namespace classes;
 
-session_start();
+namespace Classes;
 
 class User
 {
@@ -9,6 +8,7 @@ class User
 
     public function __construct($database)
     {
+        session_start();
         $this->db = $database;
     }
     public function register($data)

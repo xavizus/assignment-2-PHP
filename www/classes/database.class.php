@@ -1,6 +1,6 @@
 <?php
 
-namespace classes;
+namespace Classes;
 
 use PDO;
 
@@ -29,10 +29,10 @@ class Database
 
         // Create PDO instance
         try {
-            $this->dbh = new PDO($dsn, $this->user, $this->pass, $this->options);
-        } catch (PDOException $e) {
+            $this->dbh = new \PDO($dsn, $this->user, $this->pass, $this->options);
+        } catch (\PDOException $e) {
             $this->error = $e->getMessage();
-            throw new Exception($e->getMessage());
+            throw new \Exception($e->getMessage());
         }
     }
 

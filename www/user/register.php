@@ -52,8 +52,10 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    if (empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err'])
-       && empty($data['confirm_password_err'])) {
+    if (
+        empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err'])
+        && empty($data['confirm_password_err'])
+    ) {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         /**
          * Dependency Injection
@@ -68,47 +70,47 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-  <div class="row pt-4 pb-4">
-    <div class="col-md-10 mx-auto">
-      <div class="card card-body bg-light mt-5">
-        <h2>Create An Account</h2>
-        <p>Please fill out this form to register</p>
-        <form action="register.php" method="POST">
-          <div class="form-group">
-            <label for="name">Username: <sup>*</sup></label>
-            <input type="text" name="username" class="form-control form-control-lg
-             <?php echo (!empty($data['username_err'])) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $data['username_err']; ?></span>
-          </div>
-          <div class="form-group">
-            <label for="email">Email: <sup>*</sup></label>
-            <input type="email" name="email" class="form-control form-control-lg
-             <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
-          </div>
-          <div class="form-group">
-            <label for="password">Password: <sup>*</sup></label>
-            <input type="password" name="password" class="form-control form-control-lg
-             <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
-          </div>
-          <div class="form-group">
-            <label for="confirm_password">Confirm Password: <sup>*</sup></label>
-            <input type="password" name="confirm_password" class="form-control form-control-lg
-             <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
-          </div>
+<div class="row pt-4 pb-4">
+  <div class="col-md-10 mx-auto">
+    <div class="card card-body bg-light mt-5">
+      <h2>Create An Account</h2>
+      <p>Please fill out this form to register</p>
+      <form action="register.php" method="POST">
+        <div class="form-group">
+          <label for="name">Username: <sup>*</sup></label>
+          <input type="text" name="username" class="form-control form-control-lg
+            <?php echo (!empty($data['username_err'])) ? 'is-invalid' : ''; ?>">
+          <span class="invalid-feedback"><?php echo $data['username_err']; ?></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email: <sup>*</sup></label>
+          <input type="email" name="email" class="form-control form-control-lg
+            <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>">
+          <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password: <sup>*</sup></label>
+          <input type="password" name="password" class="form-control form-control-lg
+            <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>">
+          <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password: <sup>*</sup></label>
+          <input type="password" name="confirm_password" class="form-control form-control-lg
+            <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>">
+          <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <input type="submit" name="submit"  value="Register" class="btn btn-success btn-block">
-            </div>
-            <div class="col">
-              <a href="<?php echo URLROOT; ?>" class="btn btn-light btn-block">Have an account? Login</a>
-            </div>
+        <div class="row">
+          <div class="col">
+            <input type="submit" name="submit"  value="Register" class="btn btn-success btn-block">
           </div>
-        </form>
-      </div>
+          <div class="col">
+            <a href="<?php echo URLROOT; ?>" class="btn btn-light btn-block">Have an account? Login</a>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 <?php include '../include/footer.php';?>

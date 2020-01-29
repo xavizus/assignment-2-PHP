@@ -1,10 +1,8 @@
 <?php
-/**
- * Comments in this file are only for educational purpose
- */
 
- // Require the file that we want to test.
-require("./www/classes/settings.class.php");
+namespace Test;
+
+//Comments in this file are only for educational purpose
 
 // Get namespace for TestCase
 use PHPUnit\Framework\TestCase;
@@ -18,9 +16,10 @@ class Test extends TestCase
     protected $settings;
     
     // This function sets up your default settings before running the tests.
-    public function setUp() :void
+    public function setUp(): void
     {
-
+        // Require the file that we want to test.
+        require("./www/classes/settings.class.php");
         // in this case we are just creating a new object with class Settings
         $this->settings = new \Settings();
     }

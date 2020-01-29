@@ -1,16 +1,6 @@
 <?php
 
-if (!defined('ROOT_DIR')) {
-    define("ROOT_DIR", __DIR__ . "/../");
-}
-/**
- * Comments in this file are only for educational purpose
- */
-
- // Require the file that we want to test.
-if (!class_exists('\Settings', false)) {
-    require("./www/classes/settings.class.php");
-}
+namespace Test;
 
 // Get namespace for TestCase
 use PHPUnit\Framework\TestCase;
@@ -24,16 +14,22 @@ class SettingsTest extends TestCase
     protected $settings;
     
     // This function sets up your default settings before running the tests.
-    public function setUp() :void
+    public function setUp(): void
     {
+        if (!defined('ROOT_DIR')) {
+            define("ROOT_DIR", __DIR__ . "/../");
+        }
+        
+         // Require the file that we want to test.
+        if (!class_exists('\Settings', false)) {
+            require("./www/classes/settings.class.php");
+        }
 
         // Try to load Settings with default values.
         try {
             $this->settings = new \Settings();
-        }
-        // skipp tests if this one fails.
-        catch (Exception $error) {
-            $this->markTestSkipped("Something went when loading Settings class: ".
+        } catch (Exception $error) {
+            $this->markTestSkipped("Something went when loading Settings class: " .
             $error->getMessage());
         }
     }
