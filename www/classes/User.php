@@ -33,8 +33,7 @@ class User
         // Execute
         $result = $this->db->single();
         // error_log(json_encode($result));
-        if (password_verify($data['password'], $result->password))
-        {
+        if (password_verify($data['password'], $result->password)) {
             return $result;
         } else {
             return false;

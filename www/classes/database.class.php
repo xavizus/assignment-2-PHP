@@ -1,8 +1,10 @@
 <?php
 
+namespace \database;
+
 class Database
 {
-    private $dbh; //vad är detta? ska det inte va host?
+    private $dbh;
     private $user;
     private $password;
     private $options =
@@ -18,7 +20,10 @@ class Database
         $this->user = $databaseConfig->user;
         $this->pass = $databaseConfig->password;
         // Set DSN
-        $dsn = 'mysql:host=' . $databaseConfig->host . ';dbname=' . $databaseConfig->database . ';port=' . $databaseConfig->port;
+        $dsn =
+        'mysql:host=' . $databaseConfig->host .
+        ';dbname=' . $databaseConfig->database .
+        ';port=' . $databaseConfig->port;
 
         // Create PDO instance
         try {
@@ -28,17 +33,6 @@ class Database
             throw new Exception($e->getMessage());
         }
     }
-   
-    // public function checkCredentials($username, $password)
-    // {
-    //     $sql = "Select `user`
-    //     FROM users
-    //     WHERE username = ? AND password = ?
-    //     ";
-    //     $statment = $dsn->prepare($sql);
-    //     $statment = $statment->execute(array($username, $password));
-    //     echo($sql);
-    // }
 
     // Prepare statement with query
     public function query($sql)
