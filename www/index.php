@@ -18,13 +18,15 @@ spl_autoload_register('autoload');
         <form action="<?php echo URLROOT; ?>/user/login.php" method="post">
           <div class="form-group">
             <label for="email">Email: <sup>*</sup></label>
-            <input type="email" name="email" class="form-control form-control-lg <?php echo (!empty($_GET['msg_err'])) ? 'is-invalid' : ''; ?>">
+            <input type="email" name="email" class="form-control form-control-lg
+             <?php echo (!empty($_GET['msg_err'])) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $_GET['msg_err']; ?></span>
 
           </div>
           <div class="form-group">
             <label for="password">Password: <sup>*</sup></label>
-            <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($_GET['msg_err'])) ? 'is-invalid' : ''; ?>" >
+            <input type="password" name="password" class="form-control form-control-lg
+             <?php echo (!empty($_GET['msg_err'])) ? 'is-invalid' : ''; ?>" >
             <span class="invalid-feedback"><?php echo $_GET['msg_err']; ?></span>
 
           </div>
@@ -33,7 +35,8 @@ spl_autoload_register('autoload');
               <input type="submit" name="submit" value="Login" class="btn btn-success btn-block">
             </div>
             <div class="col">
-              <a href="<?php echo URLROOT; ?>/user/register.php" class="btn btn-light btn-block">No account? Register</a>
+              <a href="<?php echo URLROOT; ?>/user/register.php" class="btn btn-light btn-block"
+              >No account? Register</a>
             </div>
           </div>
         </form>
