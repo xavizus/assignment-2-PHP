@@ -26,18 +26,11 @@ class userTest extends TestCase
 
     protected $user;
 
-    private $mockUpData;
-
     private $testIDs = array();
     
     // This function sets up your default settings before running the tests.
     public function setUp() :void
     {
-        $this->mockUpData = array(
-            "username" => $this->generateRandomString(20),
-            "email" => $this->generateRandomString(5) ."@".$this->generateRandomString(5),
-            "password" => password_hash($this->generateRandomString(15), PASSWORD_DEFAULT)
-        );
         try {
             $this->database = new Database(new \Settings());
             $this->user = new classes\User($this->database);
@@ -48,21 +41,38 @@ class userTest extends TestCase
     }
 
     /**
-     * Check if an exception really throws when wrong path is given.
+     *
      */
     public function testIfRegisterCreatesAnAccount()
     {
-        $this->assertTrue($this->user->register($this->mockUpData));
+        $mockUpData = array(
+            "username" => $this->generateRandomString(20),
+            "email" => $this->generateRandomString(5) ."@".$this->generateRandomString(5),
+            "plainPassword" => $this->generateRandomString(15)
+        );
+        $mockUpData["password"] = password_hash($mockUpData['plainPassword'], PASSWORD_DEFAULT);
+        $this->assertTrue($this->user->register($mockUpData));
         $this->testIDs[] = $this->database->getLastInsertedId();
+
+        return $mockUpData;
     }
 
-    public function testIfValidateWorks()
+    /**
+     * @depends testIfRegisterCreatesAnAccount
+     */
+    public function testIfValidateWorks($mockUpData)
     {
-        $this->assertTrue($this->user->validate($this->mockUpData));
-    }
 
-    public function tearDown(): void
-    {
+        $mockUpData['password'] = $mockUpData['plainPassword'];
+        $shouldContainData = $this->user->validate($mockUpData);
+        $accountVerified = false;
+        if(!empty($shouldContainData)){
+            $accountVerified = true;
+        }
+
+        $this->assertTrue($accountVerified);
+
+        // Remove accounts
         foreach ($this->testIDs as $testID) {
             $this->database->deleteUserById($testID);
         }
@@ -76,7 +86,7 @@ class userTest extends TestCase
      */
     private function generateRandomString($length)
     {
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890!"#¤%&/()=?+-_@£$';
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890';
         $string = "";
 
         for ($index = 0; $index < $length; $index++) {

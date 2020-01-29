@@ -31,7 +31,11 @@ class User
         // Bind values
         $this->db->bind(':email', $data['email']);
         // Execute
+
         $result = $this->db->single();
+        if(empty($result)) {
+            return false;
+        }
         // error_log(json_encode($result));
         if (password_verify($data['password'], $result->password)) {
             return $result;
